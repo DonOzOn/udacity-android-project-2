@@ -22,6 +22,19 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
             it.asDomainModel()
         }
 
+    val asteroidsToday = Transformations.map(database.asteroidDao.getAsteroidsToday()) {
+            it.asDomainModel()
+        }
+
+    val asteroidsWeek = Transformations.map(database.asteroidDao.getAsteroidsWeek()) {
+            it.asDomainModel()
+        }
+
+    val asteroidsSaved = Transformations.map(database.asteroidDao.getAsteroidsSaved()) {
+            it.asDomainModel()
+        }
+
+
     /**
      * Refresh the videos stored in the offline cache.
      *

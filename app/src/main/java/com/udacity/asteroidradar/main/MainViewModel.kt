@@ -50,9 +50,21 @@ class MainViewModel (application: Application) : AndroidViewModel(application)  
 
     val listAsteroid = asteroidRepository.asteroids
 
+    val listAsteroidToday = asteroidRepository.asteroidsToday
+
+    val listAsteroidWeek = asteroidRepository.asteroidsWeek
+
+    val listAsteroidSave = asteroidRepository.asteroidsSaved
+
     init {
         getAsteroidList()
         getPicOfDay()
+
+
+}
+
+    fun saveDatatoList(list: List<Asteroid>){
+        _asteroidList.value = list
     }
 
     private fun getAsteroidList(){
@@ -68,6 +80,7 @@ class MainViewModel (application: Application) : AndroidViewModel(application)  
         }
 
     }
+
 
     private fun getPicOfDay(){
         viewModelScope.launch {

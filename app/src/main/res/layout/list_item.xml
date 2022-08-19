@@ -53,6 +53,7 @@
             app:layout_constraintStart_toEndOf="@+id/txtDate"
             app:layout_constraintTop_toTopOf="parent"
             app:statusIcon="@{asteroid.isPotentiallyHazardous}"
+            android:contentDescription="@string/hazardous_asteroid_image"
             tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

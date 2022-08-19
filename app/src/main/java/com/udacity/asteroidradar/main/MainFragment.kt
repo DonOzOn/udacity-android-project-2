@@ -45,6 +45,39 @@ class MainFragment : Fragment() {
                 viewModel.displayPropertyDetailsComplete()
             }
         })
+
+        viewModel.listAsteroid.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                println("listAsteroid" + it)
+                viewModel.saveDatatoList(it)
+
+            }
+        })
+
+        viewModel.listAsteroidToday?.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                println("listAsteroid" + it)
+                viewModel.saveDatatoList(it)
+
+            }
+        })
+
+        viewModel.listAsteroidWeek?.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                println("listAsteroid" + it)
+                viewModel.saveDatatoList(it)
+
+            }
+        })
+
+        viewModel.listAsteroidSave?.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                println("listAsteroid" + it)
+                viewModel.saveDatatoList(it)
+
+            }
+        })
+
         setHasOptionsMenu(true)
 
         return binding.root
@@ -56,6 +89,12 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        println("item" +  item)
+        when (item.toString()) {
+            "View today asteroids" -> viewModel.saveDatatoList(viewModel.listAsteroidToday.value!!)
+            "View week asteroids" -> viewModel.saveDatatoList(viewModel.listAsteroidWeek.value!!)
+            "View saved asteroids" -> viewModel.saveDatatoList(viewModel.listAsteroidSave.value!!)
+        }
         return true
     }
 }

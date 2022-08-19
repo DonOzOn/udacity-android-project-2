@@ -28,9 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/this_is_nasa_s_picture_of_day_showing_nothing_yet"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{viewModel.picOfDay.url}"
-                app:srcCompat="@drawable/placeholder_picture_of_day"/>
+                app:srcCompat="@drawable/placeholder_picture_of_day"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/textView"
@@ -58,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_main_image_of_the_day_layout"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/list_item"
-            app:listData="@{viewModel.listAsteroid}"
+            app:listData="@{viewModel.asteroidList}"
             />
 
         <ProgressBar

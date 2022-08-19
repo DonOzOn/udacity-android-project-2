@@ -9,6 +9,15 @@ interface AsteroidDao {
     @Query("select * from databaseasteroid Where DATE(closeApproachDate) >= DATE('now') ORDER BY closeApproachDate DESC")
     fun getAsteroids(): LiveData<List<DatabaseAsteroid>>
 
+    @Query("select * from databaseasteroid Where DATE(closeApproachDate) = DATE('now') ORDER BY closeApproachDate DESC")
+    fun getAsteroidsToday(): LiveData<List<DatabaseAsteroid>>
+
+    @Query("select * from databaseasteroid Where strftime('%W', closeApproachDate) == strftime('%W', 'now') ORDER BY closeApproachDate DESC")
+    fun getAsteroidsWeek(): LiveData<List<DatabaseAsteroid>>
+
+    @Query("select * from databaseasteroid  ORDER BY closeApproachDate DESC")
+    fun getAsteroidsSaved(): LiveData<List<DatabaseAsteroid>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroid: DatabaseAsteroid)
 }
